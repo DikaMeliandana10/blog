@@ -10,6 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('hai', function(){
+	return 'Hai ini route hai';
+});
+
+Route::get('hello', function(){
+	return view('Hello');
+});
+
+Route::get('haihai', 'HelloController@test' );
+
+Route::get('pengguna', function(){
+	return App\User::all();
+});
+
+Route::resource('category', 'CategoryController');
 
 Route::get('/', function () {
     return view('welcome');
