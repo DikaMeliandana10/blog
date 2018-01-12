@@ -26,6 +26,14 @@ Route::get('pengguna', function(){
 
 Route::resource('category', 'CategoryController');
 
+Route::resource('post', 'PostController');
+
+Route::resource('author', 'AuthorController');
+
+Route::resource('publisher', 'PublisherController');
+
+Route::resource('book', 'BookController');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,3 +41,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function(){
+	Route::resource('category', 'CategoryController');
+	Route::resource('post', 'PostController');
+	Route::resource('author', 'AuthorController');
+	Route::resource('publisher', 'PublisherController');
+	Route::resource('book', 'BookController');
+	Route::get('/', function() {
+		return view('welcome');
+		});
+	});
+
